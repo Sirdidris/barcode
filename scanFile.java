@@ -11,21 +11,28 @@ import java.lang.Double;
  */
 public class scanFile {
 	
-	public void scanIt (){
+	String fileName;
+	public scanFile (String name) {
+		fileName = name;
+	}
+
+	
+	public void scanIt (String fileName){
 		
-		File file = new File("dada.txt");
+		File file = new File(fileName+".txt");
 	
 		// new scanner to read file
 		Scanner barcodeFile = null;
 		try {
 			barcodeFile = new Scanner(file);
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+			System.out.println("Check your file name");
+			//e1.printStackTrace();
 		}
 		
 		PrintWriter writer = null;
 		try {
-			writer = new PrintWriter("output.txt");
+			writer = new PrintWriter(fileName+"output.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -43,7 +50,8 @@ public class scanFile {
 				if (x >= 3)
 					{
 					String z = barcodes.substring(x-3);
-						if (barcodes.startsWith("200") && x == 13)
+					// checks if next string is barcode and prints it to file
+						if ((barcodes.startsWith("200") || barcodes.startsWith("209")) && x == 13)
 							{
 								if (!tempBarcode.equals(barcodes))
 								{
@@ -56,20 +64,25 @@ public class scanFile {
 									tempBarcode = barcodes;
 								}
 							}
+						// looks for amount according to fact that before amount there is a counting unit
 						else if (z.equalsIgnoreCase("VNT") || z.equalsIgnoreCase("PAK") || z.equalsIgnoreCase("KPL") || z.equalsIgnoreCase("M.B"))
 						{
-							while (!line.hasNextDouble())
-								{
-									line.next();
-								}
-							amount += line.nextDouble();
-							break;
+							while (line.hasNext()){
+								while (!line.hasNextDouble())
+									{
+										line.next();
+									}
+								amount += line.nextDouble();
+								break;
+							}
 						}
 					}
 			}
 
 		}
+		// prints last barcode amount
 		writer.println(amount);
+		//close both files
 		barcodeFile.close();
 		writer.close();
 	}
