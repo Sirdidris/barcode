@@ -7,10 +7,12 @@ import java.lang.Double;
  * @author Darijus
  *version: 0.1
  *
- *Scans file for barcodes number
+ *Scans file for barcodes number and amount associated with it. Outputs file with same name +"output". Stores same imformation in 2D array.
  */
 public class scanFile {
 	
+	private long [][] barcodeArray = new long[1000][2];
+	public int counter = 0;
 	String fileName;
 	public scanFile (String name) {
 		fileName = name;
@@ -58,9 +60,11 @@ public class scanFile {
 									if (amount != 0)
 										{
 										writer.println(amount);
+										barcodeArray[counter++][1] = (long) amount;
 										}
 									amount = 0;
 									writer.print(barcodes+"\t");
+									barcodeArray[counter][0] = (long) Double.parseDouble(barcodes);
 									tempBarcode = barcodes;
 								}
 							}
@@ -82,9 +86,15 @@ public class scanFile {
 		}
 		// prints last barcode amount
 		writer.println(amount);
+		barcodeArray[counter][1] = (long) amount;		
 		//close both files
 		barcodeFile.close();
 		writer.close();
+	}
+	
+	public long[][] getArray ()
+	{
+		return this.barcodeArray;
 	}
 
 	private double valueOf(String barcodes) {
