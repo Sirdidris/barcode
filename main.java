@@ -1,10 +1,21 @@
+import java.util.Scanner;
 
 public class main {
 
 	public static void main(String[] args) {
-		scanFile f1 = new scanFile();
-		f1.scanIt();
-
+		Scanner input = new Scanner (System.in);
+		
+		System.out.println("Specify your file name:");
+		String fileName = input.next();
+		scanFile f1 = new scanFile(fileName);
+		f1.scanIt(fileName);
+		long[][] barcodes= new long[f1.counter][2];
+		barcodes = f1.getArray();
+		
+		runtime f2 = new runtime();
+		f2.RunBabyRun(barcodes, f1.counter+1);
+		
+		input.close();
 	}
 
 }
