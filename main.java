@@ -9,7 +9,16 @@ public class main {
 		System.out.println("Specify your file name:");
 		String fileName = input.next();
 		scanFile f1 = new scanFile(fileName);
-		f1.scanIt(fileName);
+		System.out.println("ermi ar bik?");
+		String next = input.next();
+		if (next.equals("ermi"))
+			{
+				f1.scanErmi(fileName);
+			}
+		else
+			{
+				f1.scanBik(fileName);
+			}
 		long[][] barcodes= new long[f1.counter][2];
 		barcodes = f1.getArray();
 		barcodeCounter f3 = new barcodeCounter();

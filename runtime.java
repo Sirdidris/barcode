@@ -16,10 +16,9 @@ public class runtime {
 		{
 			//System.out.println("\"C:\\Program Files\\Seagull\\BarTender Ultralite\\Bartend.exe\" /F=C:\\"+barcodes[i][0]+".btw /C="+barcodes[i][1]+" /P");
 			try {
-				pr = cmd.exec(path+"/F=C:\\"+barcodes[i][0]+".btw /C="+barcodes[i][1]+" /P");
+				pr = cmd.exec(path+"/F=C:\\barkodai\\"+barcodes[i][0]+".btw /C="+barcodes[i][1]+" /P");
 				try {
-					TimeUnit.MILLISECONDS.sleep(100*barcodes[i][1]);
-					System.out.println(100*barcodes[i][1]);
+					TimeUnit.MILLISECONDS.sleep(7000+100*barcodes[i][1]);
 				}
 				catch (InterruptedException e){
 					System.out.println("Sleep was interupted!");
