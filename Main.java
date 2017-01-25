@@ -148,6 +148,7 @@ public class Main extends Application {
 			TableColumn<Barcode, String> firstColumn = new TableColumn<Barcode, String>("Barkodas");
 			firstColumn.setMinWidth(100);
 			firstColumn.setMaxWidth(150);
+			firstColumn.setSortable(false);
 			firstColumn.setCellValueFactory(new PropertyValueFactory<Barcode, String>("name"));
 			firstColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 			firstColumn.setOnEditCommit (
@@ -165,6 +166,7 @@ public class Main extends Application {
 			TableColumn<Barcode, Double> secondColumn = new TableColumn<Barcode, Double>("Kiekis");
 			secondColumn.setMinWidth(50);
 			secondColumn.setMaxWidth(50);
+			secondColumn.setSortable(false);
 			secondColumn.setCellValueFactory(new PropertyValueFactory<Barcode, Double>("amount"));
 			secondColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 			secondColumn.setOnEditCommit(
@@ -180,6 +182,7 @@ public class Main extends Application {
 			TableColumn<Barcode, Boolean> actionColumn = new TableColumn<Barcode, Boolean>("Trinti");
 			actionColumn.setMinWidth(75);
 			actionColumn.setMaxWidth(75);
+			actionColumn.setSortable(false);
 			actionColumn.setCellValueFactory(
 					new Callback<TableColumn.CellDataFeatures<Barcode, Boolean>, 
 	                ObservableValue<Boolean>>() {
