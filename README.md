@@ -8,5 +8,5 @@ Later counts how many barcodes actually need to be printed (can be 2 or amount +
 Hoppefully someday I will know enough to make barcode printer print those barcodes accourding to list :)
 
 Pictures of program:
-![Picture1](https://github.com/Sirdidris/barcode/blob/master/PIC12.xcf?raw=true "PIC22")
+![Picture1](PIC12.xcf?raw=true "PIC22")
 ![Picture2](/relative/path/to/img.jpg?raw=true "PIC12")
